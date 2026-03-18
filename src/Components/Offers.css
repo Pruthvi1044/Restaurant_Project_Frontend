@@ -1,0 +1,112 @@
+.offers {
+  background: #fff;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.offer-card {
+  background-color: #1f2228;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  overflow: visible; /* To allow image to pop out slightly */
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.offer-image-wrapper {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid var(--accent-gold);
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-darker);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offer-image {
+  width: 110%;
+  height: 110%;
+  object-fit: contain;
+}
+
+.offer-content {
+  flex: 1;
+}
+
+.offer-title {
+  font-family: var(--font-cursive);
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+.offer-dish-name {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.offer-discount {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 15px;
+}
+
+.discount-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.discount-off {
+  font-family: var(--font-cursive);
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 400;
+}
+
+.offer-btn {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-card {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  .offer-image-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .offer-discount {
+    justify-content: center;
+  }
+}

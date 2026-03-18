@@ -1,0 +1,100 @@
+.booking-container {
+  display: flex;
+  gap: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.booking-form-wrapper {
+  flex: 1;
+  padding: 40px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  background-color: var(--bg);
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: var(--accent-gold);
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 15px;
+}
+
+.form-submit-btn {
+  align-self: flex-start;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.booking-map-wrapper {
+  flex: 1;
+  min-height: 400px; /* Ensure map has height on flex-end */
+}
+
+@media (max-width: 900px) {
+  .booking-container {
+    flex-direction: column;
+  }
+  
+  .booking-form-wrapper {
+    padding: 30px;
+  }
+  
+  .booking-map-wrapper {
+    min-height: 300px;
+  }
+}
+
+.booking {
+  background: #fff;
+}
+
+.booking .section-title {
+  color: #111;
+  text-align: left;
+}
+
+.booking-auth-notice {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: var(--accent-gold);
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.booking-auth-notice span {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
