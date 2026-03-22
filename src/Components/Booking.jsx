@@ -2,18 +2,57 @@ import React, { useState } from 'react';
 import './Booking.css';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';
+import axiosInstance from '../api/axiosInstance';
 
 const Booking = () => {
   const { isAuthenticated } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    guests: '',
+    booking_date: '',
+    booking_time: '',
+    message: ''
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isAuthenticated) {
       setShowAuthModal(true);
-    } else {
-      // TODO: connect to booking API
-      alert('Table booked successfully!');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axiosInstance.post('booking/create/', formData);
+      alert('Table booking request sent successfully! Check your email for details.');
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        guests: '',
+        booking_date: '',
+        booking_time: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Booking error:', error.response?.data || error.message);
+      const errorMsg = error.response?.data 
+        ? Object.values(error.response.data).flat().join(', ')
+        : 'Failed to book table. Please try again.';
+      alert(`Error: ${errorMsg}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,22 +70,89 @@ const Booking = () => {
         <div className="booking-container">
           <div className="booking-form-wrapper">
             <form className="booking-form" onSubmit={handleSubmit}>
-              <input type="text" placeholder="Your Name" required className="form-input" />
-              <input type="tel" placeholder="Phone Number" required className="form-input" />
-              <input type="email" placeholder="Your Email" required className="form-input" />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                <input 
+                  type="text" 
+                  name="name"
+                  placeholder="Your Name" 
+                  required 
+                  className="form-input" 
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                <input 
+                  type="email" 
+                  name="email"
+                  placeholder="Your Email" 
+                  required 
+                  className="form-input" 
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
 
-              <select className="form-input" required defaultValue="">
-                <option value="" disabled>How many persons?</option>
-                <option value="1">1 Person</option>
-                <option value="2">2 Persons</option>
-                <option value="3">3 Persons</option>
-                <option value="4">4 Persons</option>
-                <option value="5+">5+ Persons</option>
-              </select>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                <input 
+                  type="tel" 
+                  name="phone"
+                  placeholder="Phone Number" 
+                  required 
+                  className="form-input" 
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+                <select 
+                  name="guests"
+                  className="form-input" 
+                  required 
+                  value={formData.guests}
+                  onChange={handleChange}
+                >
+                  <option value="" disabled>How many persons?</option>
+                  <option value="1">1 Person</option>
+                  <option value="2">2 Persons</option>
+                  <option value="3">3 Persons</option>
+                  <option value="4">4 Persons</option>
+                  <option value="5">5 Persons</option>
+                  <option value="6">6+ Persons</option>
+                </select>
+              </div>
 
-              <input type="date" required className="form-input" />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                <input 
+                  type="date" 
+                  name="booking_date"
+                  required 
+                  className="form-input" 
+                  value={formData.booking_date}
+                  onChange={handleChange}
+                />
+                <input 
+                  type="time" 
+                  name="booking_time"
+                  required 
+                  className="form-input" 
+                  value={formData.booking_time}
+                  onChange={handleChange}
+                />
+              </div>
 
-              <button type="submit" className="btn-primary form-submit-btn">BOOK NOW</button>
+              <textarea 
+                name="message"
+                placeholder="Special Request or Message (Optional)"
+                className="form-input"
+                style={{ minHeight: '100px', resize: 'vertical' }}
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+
+              <button 
+                type="submit" 
+                className="btn-primary form-submit-btn"
+                disabled={loading}
+              >
+                {loading ? 'BOOKING...' : 'BOOK NOW'}
+              </button>
             </form>
           </div>
 
