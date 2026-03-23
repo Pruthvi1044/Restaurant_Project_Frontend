@@ -12,8 +12,9 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = useCallback(async () => {
     if (!isAuthenticated) {
-      setCartItems([]);
-      setCartCount(0);
+      const guestCart = JSON.parse(localStorage.getItem('guestCart') || '[]');
+      setCartItems(guestCart);
+      setCartCount(guestCart.reduce((sum, item) => sum + item.quantity, 0));
       return;
     }
     try {
@@ -30,14 +31,53 @@ export const CartProvider = ({ children }) => {
     }
   }, [isAuthenticated]);
 
+  const syncCart = useCallback(async () => {
+    const guestCart = JSON.parse(localStorage.getItem('guestCart') || '[]');
+    if (guestCart.length > 0 && isAuthenticated) {
+      try {
+        for (const item of guestCart) {
+          await axiosInstance.post('orders/add/', { 
+            dish_id: item.dish.id || item.dish_id, 
+            quantity: item.quantity 
+          });
+        }
+        localStorage.removeItem('guestCart');
+        await fetchCart();
+      } catch (err) {
+        console.error('Failed to sync guest cart', err);
+      }
+    }
+  }, [isAuthenticated, fetchCart]);
+
   useEffect(() => {
     fetchCart();
   }, [fetchCart]);
 
-  const addToCart = async (dishId, quantity = 1) => {
-    if (!isAuthenticated) return false;
+  useEffect(() => {
+    if (isAuthenticated) {
+      syncCart();
+    }
+  }, [isAuthenticated, syncCart]);
+
+  const addToCart = async (dish, quantity = 1) => {
+    if (!isAuthenticated) {
+      const guestCart = JSON.parse(localStorage.getItem('guestCart') || '[]');
+      const existingItem = guestCart.find(item => (item.dish.id || item.dish_id) === dish.id);
+      
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        guestCart.push({ dish, quantity });
+      }
+      
+      localStorage.setItem('guestCart', JSON.stringify(guestCart));
+      setCartItems([...guestCart]);
+      setCartCount(guestCart.reduce((sum, item) => sum + item.quantity, 0));
+      return true;
+    }
+
     try {
-      await axiosInstance.post('orders/add/', { dish_id: dishId, quantity });
+      await axiosInstance.post('orders/add/', { dish_id: dish.id, quantity });
       await fetchCart();
       return true;
     } catch (err) {
@@ -46,8 +86,56 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const removeFromCart = async (dishId) => {
+    if (!isAuthenticated) {
+      let guestCart = JSON.parse(localStorage.getItem('guestCart') || '[]');
+      guestCart = guestCart.filter(item => (item.dish.id || item.dish_id) !== dishId);
+      localStorage.setItem('guestCart', JSON.stringify(guestCart));
+      setCartItems([...guestCart]);
+      setCartCount(guestCart.reduce((sum, item) => sum + item.quantity, 0));
+      return true;
+    }
+
+    try {
+      await axiosInstance.delete('orders/remove/', { data: { dish_id: dishId } });
+      await fetchCart();
+      return true;
+    } catch (err) {
+      console.error('Remove from cart failed', err);
+      return false;
+    }
+  };
+
+  const updateQuantity = async (dishId, quantity) => {
+    if (!isAuthenticated) {
+        let guestCart = JSON.parse(localStorage.getItem('guestCart') || '[]');
+        const item = guestCart.find(item => (item.dish.id || item.dish_id) === dishId);
+        if (item) {
+            item.quantity = quantity;
+            if (item.quantity <= 0) {
+                guestCart = guestCart.filter(i => (i.dish.id || i.dish_id) !== dishId);
+            }
+            localStorage.setItem('guestCart', JSON.stringify(guestCart));
+            setCartItems([...guestCart]);
+            setCartCount(guestCart.reduce((sum, item) => sum + item.quantity, 0));
+        }
+        return true;
+    }
+
+    try {
+        const currentItem = cartItems.find(i => (i.dish?.id || i.dish_id) === dishId);
+        const currentQty = currentItem?.quantity || 0;
+        await axiosInstance.post('orders/add/', { dish_id: dishId, quantity: quantity - currentQty });
+        await fetchCart();
+        return true;
+    } catch (err) {
+        console.error('Update quantity failed', err);
+        return false;
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, cartCount, loading, fetchCart, addToCart }}>
+    <CartContext.Provider value={{ cartItems, cartCount, loading, fetchCart, addToCart, removeFromCart, updateQuantity }}>
       {children}
     </CartContext.Provider>
   );

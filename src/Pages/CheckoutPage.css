@@ -6,7 +6,7 @@
   max-width: 980px;
   margin: 0 auto;
   padding: 40px 24px 80px;
-  color: #f5f5f5;
+  color: var(--text-main);
 }
 
 .checkout-header {
@@ -32,15 +32,29 @@
 .checkout-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   margin: 0;
 }
 
 /* Layout */
 .checkout-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .checkout-layout {
+    flex-direction: column;
+  }
+}
+
+.checkout-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 @media (max-width: 768px) {
@@ -49,13 +63,26 @@
   }
 }
 
-/* Bill */
 .checkout-bill,
-.checkout-payment {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+.checkout-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
   border-radius: 20px;
   padding: 28px;
+}
+
+.checkout-bill {
+  width: 400px;
+  position: sticky;
+  top: 100px;
+  background: var(--bg-card);
+}
+
+@media (max-width: 900px) {
+    .checkout-bill {
+        width: 100%;
+        position: static;
+    }
 }
 
 .checkout-section-title {
@@ -65,6 +92,9 @@
   margin: 0 0 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .bill-items {
@@ -79,7 +109,8 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.8);
+  color: var(--text-main);
+  opacity: 0.8;
 }
 
 .bill-item-name {
@@ -108,7 +139,7 @@
 .total-row {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   margin-top: 4px;
 }
 
@@ -215,6 +246,32 @@
   font-weight: 700;
   letter-spacing: 0.3px;
   border-radius: 14px;
+}
+
+.address-textarea {
+  width: 100%;
+  background: var(--bg-dark);
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  padding: 15px;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-family: inherit;
+  resize: none;
+  transition: all 0.3s;
+}
+
+.address-textarea:focus {
+  outline: none;
+  border-color: #ff8c00;
+  background: rgba(255,140,0,0.05);
+}
+
+.address-hint {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 8px;
+  padding-left: 5px;
 }
 
 .checkout-note {

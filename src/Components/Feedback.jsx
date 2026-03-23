@@ -46,6 +46,16 @@ const Feedback = () => {
     fetchFeedbacks();
   }, [fetchFeedbacks]);
 
+  useEffect(() => {
+    if (isAuthenticated && user) {
+        setFormData(prev => ({ 
+            ...prev, 
+            name: `${user.first_name} ${user.last_name}`.trim() || user.username, 
+            email: user.email 
+        }));
+    }
+  }, [isAuthenticated, user]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setFormError('');

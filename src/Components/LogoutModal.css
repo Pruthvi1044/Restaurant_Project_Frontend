@@ -35,7 +35,7 @@
 }
 
 .logout-title {
-  color: #fff;
+  color: var(--text-main);
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -76,7 +76,7 @@
 
 .logout-cancel-btn:hover {
   background: var(--border-light);
-  color: #fff;
+  color: var(--text-main);
 }
 
 .logout-confirm-btn {

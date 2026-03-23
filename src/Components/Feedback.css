@@ -1,10 +1,10 @@
 .feedback-section {
-  background-color: #f9fafb;
+  background-color: var(--bg-darker);
   padding-bottom: 80px;
 }
 
 .feedback-section .section-title {
-  color: #111;
+  color: var(--text-main);
 }
 
 .feedback-loading,
@@ -24,12 +24,12 @@
 }
 
 .feedback-card {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--border-light);
 }
 
 .feedback-card:hover {
@@ -59,7 +59,7 @@
 }
 
 .feedback-name {
-  color: #111;
+  color: var(--text-main);
   font-size: 1rem;
   margin-bottom: 2px;
 }
@@ -76,7 +76,7 @@
 }
 
 .feedback-comment {
-  color: #4b5563;
+  color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.6;
   font-style: italic;
@@ -84,16 +84,17 @@
 
 /* Leave a Review Form */
 .leave-review-wrapper {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 40px;
   max-width: 750px;
   margin: 0 auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
 }
 
 .review-form-title {
-  color: #111;
+  color: var(--text-main);
   font-size: 1.6rem;
   margin-bottom: 20px;
 }
@@ -148,14 +149,14 @@
 .review-input {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: #111;
+  color: var(--text-main);
   outline: none;
   transition: border-color 0.3s;
-  background: #fff;
+  background: var(--bg-dark);
 }
 
 .review-input:focus {
@@ -177,15 +178,15 @@
 .review-textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: #111;
+  color: var(--text-main);
   outline: none;
   resize: vertical;
   transition: border-color 0.3s;
-  background: #fff;
+  background: var(--bg-dark);
 }
 
 .review-textarea:focus {

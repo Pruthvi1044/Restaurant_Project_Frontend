@@ -1,10 +1,11 @@
 .booking-container {
   display: flex;
   gap: 40px;
-  background-color: #fff;
+  background-color: var(--bg-card);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
 }
 
 .booking-form-wrapper {
@@ -21,13 +22,13 @@
 .form-input {
   width: 100%;
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
   border-radius: 5px;
   font-family: var(--font-sans);
   font-size: 1rem;
-  color: #333;
+  color: var(--text-main);
   outline: none;
-  background-color: var(--bg);
+  background-color: var(--bg-dark);
   transition: border-color 0.3s;
 }
 
@@ -75,11 +76,11 @@ select.form-input {
 }
 
 .booking {
-  background: #fff;
+  background: var(--bg-darker);
 }
 
 .booking .section-title {
-  color: #111;
+  color: var(--text-main);
   text-align: left;
 }
 

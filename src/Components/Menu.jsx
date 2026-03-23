@@ -65,13 +65,8 @@ const Menu = () => {
   };
 
   const handleAddToCart = async (dish) => {
-    if (!isAuthenticated) {
-      setShowAuthModal(true);
-      return;
-    }
     setAddingId(dish.id);
-    const discountedPrice = getDiscountedPrice(dish);
-    const success = await addToCart(dish.id, 1, discountedPrice);
+    const success = await addToCart(dish, 1);
     setAddingId(null);
     if (success) {
       setAddedId(dish.id);

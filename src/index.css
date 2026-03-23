@@ -7,6 +7,7 @@
   --accent-gold: #fbbf24;
   --accent-gold-hover: #f59e0b;
   --border-light: #374151;
+  --bg-nav: rgba(22, 23, 29, 0.95);
 
   --font-sans: 'Outfit', system-ui, sans-serif;
   --font-cursive: 'Dancing Script', cursive;
@@ -14,6 +15,43 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.light-theme {
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --bg-dark: #f3f4f6;
+  --bg-darker: #ffffff;
+  --bg-card: #ffffff;
+  --border-light: #e5e7eb;
+  --bg-nav: rgba(255, 255, 255, 0.95);
+  --accent-gold: #d97706;
+  --accent-gold-hover: #b45309;
+  
+  /* Utilities */
+  --orange-main: #f97316;
+  --orange-10: rgba(249, 115, 22, 0.1);
+  --orange-20: rgba(249, 115, 22, 0.2);
+  --orange-35: rgba(249, 115, 22, 0.35);
+  --bg-light-04: rgba(0, 0, 0, 0.04);
+  --bg-light-08: rgba(0, 0, 0, 0.08);
+  --text-light: #374151;
+  --text-light-alt: #4b5563;
+  --green-main: #16a34a;
+  --yellow-main: #ca8a04;
+}
+
+.dark-theme {
+  --orange-main: #ff8c00;
+  --orange-10: rgba(255, 140, 0, 0.1);
+  --orange-20: rgba(255, 140, 0, 0.2);
+  --orange-35: rgba(255, 140, 0, 0.35);
+  --bg-light-04: rgba(255, 255, 255, 0.04);
+  --bg-light-08: rgba(255, 255, 255, 0.08);
+  --text-light: rgba(255, 255, 255, 0.45);
+  --text-light-alt: rgba(255, 255, 255, 0.35);
+  --green-main: #4ade80;
+  --yellow-main: #fbbf24;
 }
 
 * {

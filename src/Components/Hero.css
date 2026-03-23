@@ -35,7 +35,7 @@
 .hero-title {
   font-family: var(--font-cursive);
   font-size: 5rem;
-  color: #fff;
+  color: #fff; /* Hero text often stays white for contrast over dark images */
   margin-bottom: 20px;
   font-weight: 500;
   line-height: 1.1;
@@ -43,7 +43,7 @@
 
 .hero-text {
   font-size: 1.1rem;
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 40px;
   line-height: 1.8;
 }

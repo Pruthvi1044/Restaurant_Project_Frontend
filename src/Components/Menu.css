@@ -1,9 +1,9 @@
 .menu {
-  background: #fff;
+  background: var(--bg-darker);
 }
 
 .menu .section-title {
-  color: #111;
+  color: var(--text-main);
 }
 
 .menu-filters {
@@ -25,7 +25,7 @@
 .filter-btn {
   background: transparent;
   border: none;
-  color: #333;
+  color: var(--text-main);
   padding: 8px 20px;
   border-radius: 20px;
   font-size: 1rem;
@@ -34,8 +34,8 @@
 
 .filter-btn:hover,
 .filter-btn.active {
-  background-color: #1f2228;
-  color: #fff;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
 }
 
 .menu-grid {
@@ -86,7 +86,7 @@
 }
 
 .menu-card-title {
-  color: #fff;
+  color: var(--text-main);
   font-size: 1.25rem;
   margin-bottom: 10px;
 }
@@ -122,7 +122,7 @@
 }
 
 .menu-card-price {
-  color: #fff;
+  color: var(--text-main);
   font-size: 1.2rem;
   font-weight: 600;
 }
