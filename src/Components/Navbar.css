@@ -39,7 +39,7 @@
 .navbar-logo a {
   font-family: var(--font-cursive);
   font-size: 1.6rem;
-  color: #fff;
+  color: var(--text-main);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -50,7 +50,7 @@
 }
 
 .navbar-links a {
-  color: #fff;
+  color: var(--text-main);
   font-size: 0.9rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -72,7 +72,7 @@
 .icon-btn {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--text-main);
   cursor: pointer;
   transition: color 0.3s;
   display: flex;
@@ -94,7 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--text-main);
   transition: color 0.3s;
 }
 
@@ -166,7 +166,7 @@
 }
 
 .user-avatar:hover {
-  border-color: #fff;
+  border-color: var(--text-main);
   transform: scale(1.05);
 }
 
@@ -174,12 +174,12 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 10px 0;
   min-width: 150px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-lg);
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -188,7 +188,7 @@
 
 .dropdown-item {
   padding: 10px 20px;
-  color: #fff;
+  color: var(--text-main);
   text-decoration: none;
   font-size: 0.9rem;
   transition: background 0.3s;
@@ -205,7 +205,7 @@
 
 .dropdown-divider {
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--border-light);
   margin: 5px 0;
 }
 
