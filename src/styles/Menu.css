@@ -73,7 +73,7 @@
   height: 140px;
   object-fit: cover;
   border-radius: 50%;
-  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
   transition: transform 0.3s ease;
 }
 
@@ -104,7 +104,8 @@
   color: var(--text-muted);
   font-size: 0.9rem;
   margin-bottom: 20px;
-  min-height: 85px; /* Keeps cards aligned */
+  min-height: 85px;
+  /* Keeps cards aligned */
 }
 
 .menu-card-footer {
@@ -173,8 +174,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(90deg, rgba(34,197,94,0.12), rgba(34,197,94,0.06));
-  border: 1px solid rgba(34,197,94,0.4);
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.12), rgba(34, 197, 94, 0.06));
+  border: 1px solid rgba(34, 197, 94, 0.4);
   border-radius: 10px;
   padding: 10px 16px;
   margin-bottom: 28px;
@@ -206,7 +207,7 @@
 /* Offer Dish Highlight */
 .menu-card.offer-dish {
   border: 1.5px solid rgba(34, 197, 94, 0.45);
-  box-shadow: 0 0 16px rgba(34,197,94,0.1);
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.1);
 }
 
 .offer-dish-badge {
@@ -229,4 +230,43 @@
 
 .view-more-btn {
   padding: 10px 30px;
+}
+
+.share-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #ffffff; /* Solid white background */
+  border: 1px solid #e5e7eb;
+  color: #1f2937; /* Very dark gray for the icon */
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 20; /* Ensure it's on top of everything */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.share-btn:hover {
+  background: var(--accent-gold);
+  color: #000;
+  border-color: var(--accent-gold);
+  transform: scale(1.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.share-btn svg {
+  stroke-width: 2.5px; /* Make the icon lines thicker */
+}
+
+
+/* Specific theme overrides if necessary, but keep it dark on light container */
+.dark-theme .share-btn {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #000;
 }

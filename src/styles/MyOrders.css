@@ -5,10 +5,11 @@
 }
 
 .orders-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
 }
+
 
 .orders-header {
     margin-bottom: 40px;
@@ -61,14 +62,18 @@
     border: 1px solid var(--border-light);
     border-radius: 12px;
     padding: 20px 25px;
-    margin-bottom: 20px;
-    transition: all 0.3s;
+    transition: border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
 }
 
 .history-card:hover {
-    transform: translateX(5px);
     border-color: rgba(255, 140, 0, 0.3);
 }
+
+
 
 .card-top {
     display: flex;
@@ -98,9 +103,17 @@
 .status-delivered { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid #22c55e; }
 .status-cancelled { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; }
 
+.orders-list, .bookings-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
 .card-body {
     margin-bottom: 15px;
+    min-height: 80px; /* Ensure consistency */
 }
+
 
 .items-summary {
     color: #fff;
@@ -111,16 +124,18 @@
 
 .order-meta {
     display: flex;
-    gap: 20px;
-    color: #777;
-    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 8px;
+    color: #999;
+    font-size: 0.8rem;
 }
 
 .order-meta span {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
+
 
 .card-footer {
     display: flex;
@@ -161,4 +176,22 @@
     padding: 60px;
     color: #777;
     font-size: 1.2rem;
+    grid-column: 1 / -1; /* Center across all 3 columns */
 }
+
+@media (max-width: 1024px) {
+
+    .orders-list, .bookings-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .orders-list, .bookings-list {
+        grid-template-columns: 1fr;
+    }
+    .orders-header h1 {
+        font-size: 2rem;
+    }
+}
+

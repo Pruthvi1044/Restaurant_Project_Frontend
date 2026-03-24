@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Menu.css';
-import { ShoppingCart, Tag, X } from 'lucide-react';
+import { ShoppingCart, Tag, X, Share2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import AuthModal from './AuthModal';
@@ -71,6 +71,28 @@ const Menu = () => {
     if (success) {
       setAddedId(dish.id);
       setTimeout(() => setAddedId(null), 1500);
+    }
+  };
+
+  const handleShare = async (dish) => {
+    const offer = getOfferForDish(dish);
+    const price = getDiscountedPrice(dish) || dish.price;
+    const shareData = {
+      title: dish.name,
+      text: `Check out this delicious ${dish.name} at Swaad Indian Bistro! 🥘\n\n${dish.description}\nPrice: ₹${parseFloat(price).toFixed(2)}`,
+      url: window.location.href
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.error('Error sharing:', err);
+      }
+    } else {
+      // Fallback to WhatsApp
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareData.text + '\n' + shareData.url)}`;
+      window.open(whatsappUrl, '_blank');
     }
   };
 
@@ -148,6 +170,16 @@ const Menu = () => {
                           {offer.discount_percent}% OFF
                         </div>
                       )}
+                      <button 
+                        className="share-btn" 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleShare(dish);
+                        }}
+                        title="Share dish"
+                      >
+                        <Share2 size={16} />
+                      </button>
                     </div>
                     <div className="menu-card-content">
                       <p className="menu-card-category">{dish.category?.name}</p>

@@ -73,14 +73,18 @@ export const CartProvider = ({ children }) => {
       localStorage.setItem('guestCart', JSON.stringify(guestCart));
       setCartItems([...guestCart]);
       setCartCount(guestCart.reduce((sum, item) => sum + item.quantity, 0));
+      setIsCartOpen(true);
       return true;
     }
+
 
     try {
       await axiosInstance.post('orders/add/', { dish_id: dish.id, quantity });
       await fetchCart();
+      setIsCartOpen(true);
       return true;
     } catch (err) {
+
       console.error('Add to cart failed', err);
       return false;
     }
@@ -134,11 +138,17 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
   return (
-    <CartContext.Provider value={{ cartItems, cartCount, loading, fetchCart, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider value={{ 
+      cartItems, cartCount, loading, fetchCart, addToCart, removeFromCart, updateQuantity,
+      isCartOpen, setIsCartOpen
+    }}>
       {children}
     </CartContext.Provider>
   );
+
 };
 
 export const useCart = () => {

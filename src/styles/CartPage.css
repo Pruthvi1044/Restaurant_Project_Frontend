@@ -114,7 +114,7 @@
   transition: transform 0.2s;
 }
 
-.cart-item:hover { transform: translateX(4px); }
+.cart-item:hover { border-color: var(--accent-gold); }
 
 .cart-item-img {
   width: 80px;

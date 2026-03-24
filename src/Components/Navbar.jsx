@@ -10,7 +10,7 @@ import LogoutModal from './LogoutModal';
 
 const Navbar = () => {
   const { isAuthenticated, user, logout } = useAuth();
-  const { cartCount } = useCart();
+  const { cartCount, setIsCartOpen } = useCart();
   const { isDarkMode, toggleTheme } = useTheme();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -61,10 +61,15 @@ const Navbar = () => {
             </Link>
           )}
           
-          <Link to="/cart" className="icon-btn cart-icon-btn" aria-label="Cart">
+          <button 
+            className="icon-btn cart-icon-btn" 
+            aria-label="Cart"
+            onClick={() => setIsCartOpen(true)}
+          >
             <ShoppingCart size={20} />
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </Link>
+          </button>
+
           
           <button className="icon-btn" aria-label="Search"><Search size={20} /></button>
 

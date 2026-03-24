@@ -13,12 +13,15 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import VerifyEmail from "./Pages/VerifyEmail";
 import Profile from "./Pages/Profile";
 import MyOrders from "./Pages/MyOrders";
+import CartSidebar from "./Components/CartSidebar";
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
+        <CartSidebar />
         <Routes>
+
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/menu" element={<MenuPage />} />
