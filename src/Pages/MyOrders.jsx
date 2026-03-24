@@ -3,7 +3,7 @@ import axiosInstance from '../api/axiosInstance';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { Package, Calendar, Clock, MapPin, ChevronRight, ShoppingBag, Utensils } from 'lucide-react';
-import './MyOrders.css';
+import '../styles/MyOrders.css';
 
 const MyOrders = () => {
     const [orders, setOrders] = useState([]);

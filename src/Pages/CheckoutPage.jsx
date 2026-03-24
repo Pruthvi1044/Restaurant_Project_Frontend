@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CheckoutPage.css';
+import '../styles/CheckoutPage.css';
 import { ArrowLeft, CheckCircle, Truck, CreditCard, ShoppingBag, MapPin } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';

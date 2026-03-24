@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Navbar.css';
+import '../styles/Navbar.css';
 import { User, ShoppingCart, Search, ClipboardList, LogOut, UserCircle, Moon, Sun } from 'lucide-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';

@@ -4,7 +4,7 @@ import axiosInstance from '../api/axiosInstance';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { User, Mail, Phone, MapPin, Lock, Save, AlertCircle, CheckCircle, Edit3, X, UserCircle } from 'lucide-react';
-import './Profile.css';
+import '../styles/Profile.css';
 
 const Profile = () => {
     const { user, refreshUser } = useAuth();

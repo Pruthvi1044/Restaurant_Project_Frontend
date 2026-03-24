@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Booking.css';
+import '../styles/Booking.css';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';
 import axiosInstance from '../api/axiosInstance';

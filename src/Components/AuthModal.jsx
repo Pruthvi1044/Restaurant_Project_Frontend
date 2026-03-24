@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AuthModal.css';
+import '../styles/AuthModal.css';
 import { X, Eye, EyeOff, User, Mail, Phone, Lock } from 'lucide-react';
 import axiosInstance from '../api/axiosInstance';
 import { useAuth } from '../context/AuthContext';

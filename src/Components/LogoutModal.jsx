@@ -1,5 +1,5 @@
 import React from 'react';
-import './LogoutModal.css';
+import '../styles/LogoutModal.css';
 import { LogOut, X } from 'lucide-react';
 
 const LogoutModal = ({ isOpen, onConfirm, onCancel }) => {

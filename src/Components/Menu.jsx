@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Menu.css';
+import '../styles/Menu.css';
 import { ShoppingCart, Tag, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';

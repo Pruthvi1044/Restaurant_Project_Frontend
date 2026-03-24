@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Offers.css';
+import '../styles/Offers.css';
 import { ShoppingCart } from 'lucide-react';
 import axiosInstance from '../api/axiosInstance';
 import { useNavigate } from 'react-router-dom';
